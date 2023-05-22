@@ -1,0 +1,52 @@
+//ordenamiento por intercambio iterativo y recursivo
+public class Main
+{
+    
+    public static int[] ordIntercambioIterativo (int a[]){
+        
+        for(int i=0; i<a.length-1;i++){
+            
+            for(int j=1; i<a.length;j++){
+                int aux=a[i];
+                if(a[i]>a[j]){
+                    a[i]=a[j];
+                    a[j]=aux;
+                }
+            }
+        }
+        return a;
+        
+    }
+    
+    public static int[] ordIntercambioRecursivo(int a[], int n){
+        
+        if(n==1)
+            return a;
+        
+        else{
+            for(int i=0; i<n-1;i++){
+                int aux=a[i+1];
+                if(a[i]>a[i+1]){
+                    a[i]=a[i+1];
+                    a[i+1]=aux;
+                }
+                
+            ordIntercambioRecursivo(a,n-1);
+            }
+        
+        }
+         return a;
+    }
+
+      
+    
+	public static void main(String[] args) {
+	    int entrada[] = {8,4,6,2};
+	    
+	    int ordenado[]= ordIntercambioIterativo(entrada);
+	    
+	    for(int i=0; i<ordenado.length-1;i++){
+	        System.out.println(ordenado[i]);
+	    }
+	}
+}
