@@ -1,48 +1,57 @@
-//ordenamiento por intercambio iterativo y recursivo
-public class Main
-{
-    
-    public static int[] ordIntercambioIterativo (int a[]){
+//ordenamiento por insercion recursivo e iterativo
+class HelloWorld {
+    public static int[] ordInsercionIterativo (int a[]){
+        int i=0;
+        int aux=0;
+        int j=0;
         
-        for(int i=0; i<a.length-1;i++){
-            for(int j=i+1; j<a.length;j++){
-                if(a[i]>a[j]){ 
-                    int aux=a[i];
-                    a[i]=a[j];
-                    a[j]=aux;
-                }
-            }
+        for(i=1; i<a.length; i++){
+            j=i;
+            aux = a[i];
+        
+        while (j>0 && aux<a[j-1]){
+            a[j]=a[j-1];
+            j--;
         }
-        return a;
+        
+        a[j]=aux;
+        }
+       return a; 
         
     }
     
-    public static int[] ordIntercambioRecursivo(int a[], int n){
+    public static int[] ordInsercionIRecursivo(int a[], int n){
+        
+        int i=0;
+        int aux=0;
+        int j=0;
         
         if(n==1)
             return a;
         
         else{
-            for(int i=0; i<n-1;i++){
-                if(a[i]>a[i+1]){ 
-                    int aux=a[i];
-                    a[i]=a[i+1];
-                    a[i+1]=aux;
-                }
-                
-            ordIntercambioRecursivo(a,n-1);
+            for(i=1; i<a.length; i++){
+            j=i;
+            aux = a[i];
+            
+            if(j>0 && aux<a[j-1]){
+                a[j]=a[j-1];
+            j--;
+        }
+        
+        a[j]=aux;
             }
+        ordInsercionIRecursivo(a,n-1);
+        
         
         }
          return a;
     }
-
-      
     
-	public static void main(String[] args) {
-	    int entrada[] = {8,4,6,2};
+    public static void main(String[] args) {
+       int entrada[] = {50,20,40,10,60};
 	    
-	    int ordenado[]= ordIntercambioIterativo(entrada);
+	    int ordenado[]= ordInsercionIterativo(entrada);
 	    
 	    System.out.println("iterativo: ");
 	    
@@ -52,10 +61,11 @@ public class Main
 	    
 	    System.out.println("recursivo: ");
 	    
-	    int recursivo[] = ordIntercambioRecursivo(entrada, entrada.length);
+	    int recursivo[] = ordInsercionIRecursivo(entrada, entrada.length);
 	    
 	    for(int i=0; i<recursivo.length;i++){
 	        System.out.println(recursivo[i]);
 	    }
 	}
+    
 }
